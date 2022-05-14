@@ -1,4 +1,3 @@
-// const derramesController = require("./controllers/explorerController")
 const express = require('express')
 const app = express ()
 app.use(express.json())
@@ -7,54 +6,58 @@ const port = process.envPORT ||  3500
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
 
-
 app.get('/derrames', async (req, res) => {
     const getAllDerramesNames =  await prisma.derrames.findMany({});
     res.json(getAllDerramesNames);
 });
 
-app.get('/', (req, res) => {
-    res.send('messagge')
-})
+app.get('/derrames/:id', async (req, res) => {
+    const id = req.params.id;
+    const derrames = await prisma.derrames.findUnique({where: {id: parseInt(id)}});
+    res.json(derrames);
+});
 
-app.get('/COT/Derrames', (req, res) => {
+app.post('/derrames', async (req, res) => {
+    const derrame = {
+    nombre: req.body.nombre,
+    ubicacion: req.body.ubicacion,
+    paisesi: req.body.paisesi,
+    causas: req.body.causas,
+    consecuencias: req.body.consecuencias,
+    soluciones: req.body.soluciones
+    };
+    const message = 'Stored data';
+    await prisma.derrames.create({data: derrame});
+    return res.json({message});
+});
 
-    const Derrames = derramesController.getAllDerrames(mision)
-    res.status(200).json(Derrames)
-})
+app.put('/derrames/:id', async (req, res) => {
+	const id = parseInt(req.params.id);
 
-app.get('/COT/Derrames/:derrame', (req, res) => {
-    const mision = req.params.mission
-    const explorersInMission = ExplorerController.getExplorersByMissions(mision)
-    res.status(200).json(explorersInMission)
-})
+	await prisma.derrames.update({
+		where: {
+			id: id
+		},
+		data: {
+			nombre: req.body.nombre,
+            ubicacion: req.body.ubicacion,
+            paisesi: req.body.paisesi,
+            causas: req.body.causas,
+            consecuencias: req.body.consecuencias,
+            soluciones: req.body.soluciones
+		}
+	})
 
-// app.get('/v1/explorers/amount/:mission', (req, res) => {
-//     const mission = req.params.mission
-//     const explorersAmountInMission = ExplorerController.getExplorersAmountByMission(mission)
-//     res.status(200).json({
-//         'mission': mission,
-//         'quantity': explorersAmountInMission
-//     })
-// })
+	return res.json({message: `Derrame with id: ${id} updated`});
+});
 
-// app.get('/v1/explorers/usernames/:mission', (req, res) => {
-//     const mission = req.params.mission
-//     const explorersUserNamesInMission = ExplorerController.getExplorersUsernameByMission(mission)
-//     res.status(200).json({
-//         'mission': mission,
-//         'users': explorersUserNamesInMission
-//     })
-// })
+app.delete('/derrames/:id', async (req, res) => {
+	const id = parseInt(req.params.id);
+	await prisma.derrames.delete({where: {id: id}});
+	return res.json({message: `Derrame with id: ${id} deleted`});
+});
 
-// app.get('/v1/fizzbuzz/:score', (req, res) => {
-//     const score = req.params.score
-//     const trick = ExplorerController.fizzBuzz(score)
-//     res.status(200).json({
-//         'score': score,
-//         'trick': trick
-//     })
-// })
+
 
 app.listen(port, () => {
     console.log(`message ${port}`)
