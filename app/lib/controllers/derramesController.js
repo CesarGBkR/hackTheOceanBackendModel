@@ -4,12 +4,20 @@ const derramesServices = require('../services/derramesServices')
 
 class derramesController{
 
+    static getAllDerrames(path){
+        reader.readJsonFile(path)
+    }
+
     static getAllDerramesName(){
-        derramesServices.derramesNames(derrame)
+        derramesServices.derramesNames(derrames)
     }
 
     static getDerramesByUbi(ubi){
         derramesServices.filterByubication(derrames, ubi)
+    }
+
+    static getAllDerramesByCountry(country){
+        derramesServices.filterByCountry(derrames,country)
     }
 }
 
