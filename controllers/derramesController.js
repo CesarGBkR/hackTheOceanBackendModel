@@ -5,7 +5,7 @@ const derramesServices = require('../services/derramesServices')
 class derramesController{
 
     static getAllDerramesName(){
-        derramesServices.getDerramesNames(derrame)
+        derramesServices.derramesNames(derrame)
     }
 
     static getDerramesByUbi(ubi){
