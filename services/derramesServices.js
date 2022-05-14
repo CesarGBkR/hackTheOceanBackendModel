@@ -15,6 +15,8 @@ class explorerService {
         console.log(filterByubicaion)
         return filterByubicaion
     }
+
+    static
 }
 
 // console.log(derrames)
