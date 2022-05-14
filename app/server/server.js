@@ -2,7 +2,16 @@
 const express = require('express')
 const app = express ()
 app.use(express.json())
-const port =  3500
+const port = process.envPORT ||  3500
+
+const { PrismaClient } = require('@prisma/client')
+const prisma = new PrismaClient()
+
+
+app.get('/derrames', async (req, res) => {
+    const getAllDerramesNames =  await prisma.derrames.findMany({});
+    res.json(getAllDerramesNames);
+});
 
 app.get('/', (req, res) => {
     res.send('messagge')
