@@ -13,10 +13,9 @@ datasource db {
 model derrames{
   id Int @id @default(0)
   nombre String @unique
-  ubicacion String
-  paisesi 
-  causas
-  consecuencias
-  soluciones
-
+  ubicacion String @db.VarChar(191)
+  paisesi String @db.VarChar(191)
+  causas String @db.Text
+  consecuencias String @db.Text
+  soluciones String @db.Text
 }
