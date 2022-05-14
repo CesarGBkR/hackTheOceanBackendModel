@@ -1,0 +1,44 @@
+Ricardo se encargará de la construcción de la base de datos
+
+formato menejable Json
+// {
+//     "nombre": "Nombre",
+//     "ubicacion": "",
+//     "paisesI":["",""],
+//     "causas":{
+//             "N.Causas":{}
+//         },
+//     "consecuencias":{
+//         "N.consevuencias":{}
+//     },
+//     "soluciones":{
+//         "N.soluciones":{}
+//     }
+
+// }
+
+--------Tabla--------
+
+Derrame    Causa(s)    Consecuencia(s)    Solución(es)
+
+--------Derrame--------
+Nombre    Ubicación    Países involucrados
+--------Países I--------
+N.Paíáses
+
+--------Causas--------
+N.causas
+
+--------Consecuencias--------
+N.consevuencias
+
+--------Solución(es)--------
+N.soluciones
+
+
+Ricardo también se encargará del formato para la entrega en el Frontent del contenido de las bases de datos
+
+
+Jaime tendrá la tarea de complementar el Frontent siguiendo una estética y llevando en uso el Framework Vue
+
+Cesar se encargará del Backend completo hasta que alguien se libere de sus tareas o se integre un nuevo miembro
