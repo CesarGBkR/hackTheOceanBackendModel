@@ -1,3 +1,4 @@
+const derramesController = require('../lib/controllers/derramesController')
 const express = require('express')
 const app = express ()
 app.use(express.json())
@@ -15,6 +16,20 @@ app.get('/derrames/:id', async (req, res) => {
     const id = req.params.id;
     const derrames = await prisma.derrames.findUnique({where: {id: parseInt(id)}});
     res.json(derrames);
+});
+
+app.get('/derrames/country/:country', async (req, res) => {
+    const country = req.params.country
+    const getAllDerramesNames =  await prisma.derrames.findMany({});
+    var derramesByCountry = derramesController.getDerramesByCountry(getAllDerramesNames, country)
+    res.json(derramesByCountry);
+});
+
+app.get('/derrames/ubication/:ubi', async (req, res) => {
+    const ubi = req.params.ubi
+    const getAllDerramesNames =  await prisma.derrames.findMany({});
+    var derramesByUbi = derramesController.getDerramesByUbi(getAllDerramesNames, ubi)
+    res.json(derramesByUbi);
 });
 
 app.post('/derrames', async (req, res) => {

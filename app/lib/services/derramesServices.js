@@ -1,6 +1,3 @@
-const reader = require('../utils/reader')
-const derrames = reader.readJsonFile('../derrames.json')
-
 class explorerService {
     static derramesNames(derrames){
         var name = derrames.map(function (element) {
@@ -15,13 +12,9 @@ class explorerService {
     }
 
     static filterByCountry(derrames, country){
-        var filterByCountry = derrames.filter((derrames) => derrames.paisesI == country);
-        return filterByCountry
+        var filterByCountrys = derrames.filter((element) => element.paisesi == country);
+        return filterByCountrys
     }
 }
 
-console.log(derrames)
-// explorerService.getDerramesNames(derrames)
-// explorerService.filterByubication(derrames, 'Golfo de México')
-// explorerService.filterByCountry(derrames, 'México')
 module.exports = explorerService
