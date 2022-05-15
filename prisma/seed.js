@@ -8,7 +8,7 @@ const prisma = new PrismaClient();
             update: {},
             create: {
                 nombre: "Guerra del Golfo",
-                date: "1/1/1991",
+                fecha: "1/1/1991",
                 ubicacion: 'Golfo Pérsico',
                 paisesi: "Irak, Kuwait, Arabia Saudita",
                 causas: "causa 1, causa2",
@@ -22,7 +22,7 @@ const prisma = new PrismaClient();
             update: {},
             create: {
                 nombre: "Deepwater Horizon",
-                date: "22/4/2010",
+                fecha: "22/4/2010",
                 ubicacion: 'Deepwater Horizon',
                 paisesi: "Estados Unidos",
                 causas:"causa 1",
@@ -36,7 +36,7 @@ const prisma = new PrismaClient();
             update: {},
             create: {
                 nombre: "Ixtoc",
-                date: "03/6/1979",
+                fecha: "03/6/1979",
                 ubicacion: "Golfo de México",
                 paisesi: "México",
                 causas:"causa 1, causa 2, causa 3",

@@ -36,7 +36,7 @@ app.post('/derrames', async (req, res) => {
     const derrame = {
     nombre: req.body.nombre,
     ubicacion: req.body.ubicacion,
-    date:req.body.date,
+    fecha:req.body.fecha,
     paisesi: req.body.paisesi,
     causas: req.body.causas,
     consecuencias: req.body.consecuencias,
@@ -57,7 +57,7 @@ app.put('/derrames/:id', async (req, res) => {
 		data: {
 			nombre: req.body.nombre,
             ubicacion: req.body.ubicacion,
-            date: req.body.date,
+            fecha: req.body.fecha,
             paisesi: req.body.paisesi,
             causas: req.body.causas,
             consecuencias: req.body.consecuencias,
